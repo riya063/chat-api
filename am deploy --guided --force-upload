@@ -1,0 +1,201 @@
+{
+    "Functions": [
+        {
+            "FunctionName": "generate-invoice",
+            "FunctionArn": "arn:aws:lambda:ap-south-1:957833998964:function:generate-invoice",
+            "Runtime": "python3.10",
+            "Role": "arn:aws:iam::957833998964:role/pdf-invoice-generator-for-GenerateInvoiceFunctionRo-iOkWCmGE9lvF",
+            "Handler": "lambda_function.lambda_handler",
+            "CodeSize": 30406631,
+            "Description": "Generates invoice PDFs using WeasyPrint",
+            "Timeout": 15,
+            "MemorySize": 512,
+            "LastModified": "2025-06-09T09:54:47.000+0000",
+            "CodeSha256": "Y4bwWNiYlQ5lTd6s+xUduYfsj5E4QMw4t+hHX5YtJsw=",
+            "Version": "$LATEST",
+            "TracingConfig": {
+                "Mode": "PassThrough"
+            },
+            "RevisionId": "f0bd91de-5c15-4112-aa52-2866eab0ecb3",
+            "Layers": [
+                {
+                    "Arn": "arn:aws:lambda:ap-south-1:957833998964:layer:weasyprint-layer:1",
+                    "CodeSize": 18821611
+                }
+            ],
+            "PackageType": "Zip",
+            "Architectures": [
+                "x86_64"
+            ],
+            "EphemeralStorage": {
+                "Size": 512
+            },
+            "SnapStart": {
+                "ApplyOn": "None",
+                "OptimizationStatus": "Off"
+            },
+            "LoggingConfig": {
+                "LogFormat": "Text",
+                "LogGroup": "/aws/lambda/generate-invoice"
+            }
+        },
+        {
+            "FunctionName": "chat-app-EditMessageFunction-rc9ngcPxdr8a",
+            "FunctionArn": "arn:aws:lambda:ap-south-1:957833998964:function:chat-app-EditMessageFunction-rc9ngcPxdr8a",
+            "Runtime": "python3.10",
+            "Role": "arn:aws:iam::957833998964:role/chat-app-EditMessageFunctionRole-BSdf0isLrZV7",
+            "Handler": "src/edit_message.handler",
+            "CodeSize": 11789,
+            "Description": "",
+            "Timeout": 10,
+            "MemorySize": 128,
+            "LastModified": "2025-06-14T19:49:12.575+0000",
+            "CodeSha256": "3IzMUPCV8MYSkulsLUq9DmjVgMYPmiLpyPxkXPfUsPY=",
+            "Version": "$LATEST",
+            "Environment": {
+                "Variables": {
+                    "TABLE_NAME": "ChatMessages-chat-app"
+                }
+            },
+            "TracingConfig": {
+                "Mode": "PassThrough"
+            },
+            "RevisionId": "bc7b4dbf-8bae-4398-a6f4-c7cf2fb4e36b",
+            "PackageType": "Zip",
+            "Architectures": [
+                "x86_64"
+            ],
+            "EphemeralStorage": {
+                "Size": 512
+            },
+            "SnapStart": {
+                "ApplyOn": "None",
+                "OptimizationStatus": "Off"
+            },
+            "LoggingConfig": {
+                "LogFormat": "Text",
+                "LogGroup": "/aws/lambda/chat-app-EditMessageFunction-rc9ngcPxdr8a"
+            }
+        },
+        {
+            "FunctionName": "chat-app-GetMessagesFunction-p59pWNoCMPMh",
+            "FunctionArn": "arn:aws:lambda:ap-south-1:957833998964:function:chat-app-GetMessagesFunction-p59pWNoCMPMh",
+            "Runtime": "python3.10",
+            "Role": "arn:aws:iam::957833998964:role/chat-app-GetMessagesFunctionRole-aA4uwiZjcaM8",
+            "Handler": "src/get_messages.handler",
+            "CodeSize": 11789,
+            "Description": "",
+            "Timeout": 10,
+            "MemorySize": 128,
+            "LastModified": "2025-06-14T19:48:55.000+0000",
+            "CodeSha256": "3IzMUPCV8MYSkulsLUq9DmjVgMYPmiLpyPxkXPfUsPY=",
+            "Version": "$LATEST",
+            "VpcConfig": {
+                "SubnetIds": [],
+                "SecurityGroupIds": [],
+                "VpcId": "",
+                "Ipv6AllowedForDualStack": false
+            },
+            "Environment": {
+                "Variables": {
+                    "TABLE_NAME": "ChatMessages-chat-app"
+                }
+            },
+            "TracingConfig": {
+                "Mode": "PassThrough"
+            },
+            "RevisionId": "f8d46dcd-8de1-4226-999e-9340e9b9c6fe",
+            "PackageType": "Zip",
+            "Architectures": [
+                "x86_64"
+            ],
+            "EphemeralStorage": {
+                "Size": 512
+            },
+            "SnapStart": {
+                "ApplyOn": "None",
+                "OptimizationStatus": "Off"
+            },
+            "LoggingConfig": {
+                "LogFormat": "Text",
+                "LogGroup": "/aws/lambda/chat-app-GetMessagesFunction-p59pWNoCMPMh"
+            }
+        },
+        {
+            "FunctionName": "chat-app-DeleteMessageFunction-GebO49ancBFs",
+            "FunctionArn": "arn:aws:lambda:ap-south-1:957833998964:function:chat-app-DeleteMessageFunction-GebO49ancBFs",
+            "Runtime": "python3.10",
+            "Role": "arn:aws:iam::957833998964:role/chat-app-DeleteMessageFunctionRole-zuOGBKshXDDy",
+            "Handler": "src/delete_message.handler",
+            "CodeSize": 11789,
+            "Description": "",
+            "Timeout": 10,
+            "MemorySize": 128,
+            "LastModified": "2025-06-14T19:49:12.707+0000",
+            "CodeSha256": "3IzMUPCV8MYSkulsLUq9DmjVgMYPmiLpyPxkXPfUsPY=",
+            "Version": "$LATEST",
+            "Environment": {
+                "Variables": {
+                    "TABLE_NAME": "ChatMessages-chat-app"
+                }
+            },
+            "TracingConfig": {
+                "Mode": "PassThrough"
+            },
+            "RevisionId": "6b195bc4-bd68-4205-addb-f7541ee8f726",
+            "PackageType": "Zip",
+            "Architectures": [
+                "x86_64"
+            ],
+            "EphemeralStorage": {
+                "Size": 512
+            },
+            "SnapStart": {
+                "ApplyOn": "None",
+                "OptimizationStatus": "Off"
+            },
+            "LoggingConfig": {
+                "LogFormat": "Text",
+                "LogGroup": "/aws/lambda/chat-app-DeleteMessageFunction-GebO49ancBFs"
+            }
+        },
+        {
+            "FunctionName": "chat-app-SendMessageFunction-mbeQqbs3Npm0",
+            "FunctionArn": "arn:aws:lambda:ap-south-1:957833998964:function:chat-app-SendMessageFunction-mbeQqbs3Npm0",
+            "Runtime": "python3.10",
+            "Role": "arn:aws:iam::957833998964:role/chat-app-SendMessageFunctionRole-E5sCDCskvpWL",
+            "Handler": "src/send_message.handler",
+            "CodeSize": 11789,
+            "Description": "",
+            "Timeout": 10,
+            "MemorySize": 128,
+            "LastModified": "2025-06-14T19:49:12.764+0000",
+            "CodeSha256": "3IzMUPCV8MYSkulsLUq9DmjVgMYPmiLpyPxkXPfUsPY=",
+            "Version": "$LATEST",
+            "Environment": {
+                "Variables": {
+                    "TABLE_NAME": "ChatMessages-chat-app"
+                }
+            },
+            "TracingConfig": {
+                "Mode": "PassThrough"
+            },
+            "RevisionId": "f45bdd39-e39e-4d32-8191-5fd434db2c38",
+            "PackageType": "Zip",
+            "Architectures": [
+                "x86_64"
+            ],
+            "EphemeralStorage": {
+                "Size": 512
+            },
+            "SnapStart": {
+                "ApplyOn": "None",
+                "OptimizationStatus": "Off"
+            },
+            "LoggingConfig": {
+                "LogFormat": "Text",
+                "LogGroup": "/aws/lambda/chat-app-SendMessageFunction-mbeQqbs3Npm0"
+            }
+        }
+    ]
+}

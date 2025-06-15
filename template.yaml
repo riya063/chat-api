@@ -1,0 +1,111 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Serverless Chat API using AWS SAM
+
+Globals:
+  Function:
+    Timeout: 10
+    Runtime: python3.10
+    MemorySize: 128
+
+Resources:
+  ChatTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: ChatTable
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      BillingMode: PAY_PER_REQUEST
+
+  GetMessagesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/get_messages.handler
+      CodeUri: .
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref ChatTable
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref ChatTable
+      Events:
+        GetMessagesAPI:
+          Type: Api
+          Properties:
+            Path: /messages
+            Method: get
+
+  SendMessageFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/send_message.handler
+      CodeUri: .
+      Policies:
+        - DynamoDBWritePolicy:
+            TableName: !Ref ChatTable
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref ChatTable
+      Events:
+        PostMessageAPI:
+          Type: Api
+          Properties:
+            Path: /messages
+            Method: post
+
+  EditMessageFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/edit_message.handler
+      CodeUri: .
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref ChatTable
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref ChatTable
+      Events:
+        EditMessageAPI:
+          Type: Api
+          Properties:
+            Path: /messages/{id}
+            Method: put
+
+  DeleteMessageFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/delete_message.handler
+      CodeUri: .
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref ChatTable
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref ChatTable
+      Events:
+        DeleteMessageAPI:
+          Type: Api
+          Properties:
+            Path: /messages/{id}
+            Method: delete
+
+Outputs:
+  GetMessagesAPIEndpoint:
+    Description: "GET endpoint for retrieving chat messages"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/messages"
+
+  PostMessageAPIEndpoint:
+    Description: "POST endpoint for sending a new chat message"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/messages"
+
+  EditMessageAPIEndpoint:
+    Description: "PUT endpoint for editing a chat message"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/messages/{id}"
+
+  DeleteMessageAPIEndpoint:
+    Description: "DELETE endpoint for deleting a chat message"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/messages/{id}"
